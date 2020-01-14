@@ -1,0 +1,25 @@
+.input {
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  border: 1px solid #ced4da;
+  border-radius: 2.25rem;
+}
+
+ul.dashed {
+  list-style: none;
+  margin-left: 0;
+  padding-left: 2em;
+}
+
+ul.dashed > li {
+  line-height: 20px;
+  margin-bottom: 15px;
+}
+
+ul.dashed > li:before {
+  display: inline-block;
+  content: "-";
+  width: 1em;
+  margin-left: -1em;
+}

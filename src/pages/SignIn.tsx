@@ -18,6 +18,7 @@ import {
 import React from "react";
 import { person, unlock, helpCircleOutline } from "ionicons/icons";
 import Logo from "../img/eoa-logo.png";
+import styles from "../css/signin.module.css";
 
 const SignIn: React.FC = () => {
   return (
@@ -26,7 +27,11 @@ const SignIn: React.FC = () => {
         <IonGrid>
           <IonRow>
             <IonCol>
-              <IonItem lines="none">
+              <IonItem
+                lines="none"
+                style={{ marginBottom: "60px" }}
+                routerLink={`/help`}
+              >
                 <IonIcon icon={helpCircleOutline} slot="end" />
               </IonItem>
             </IonCol>
@@ -47,7 +52,7 @@ const SignIn: React.FC = () => {
           </IonRow>
           <IonRow>
             <IonCol>
-              <IonItem className="signin-item">
+              <IonItem lines="none" className={styles.input}>
                 <IonIcon icon={person} slot="start" />
                 <IonInput placeholder="User ID"></IonInput>
               </IonItem>
@@ -55,7 +60,7 @@ const SignIn: React.FC = () => {
           </IonRow>
           <IonRow>
             <IonCol>
-              <IonItem className="signin-item">
+              <IonItem lines="none" className={styles.input}>
                 <IonIcon icon={unlock} slot="start" />
                 <IonInput type="password" placeholder="Password"></IonInput>
               </IonItem>
@@ -64,7 +69,14 @@ const SignIn: React.FC = () => {
           <IonRow>
             <IonCol>
               <div className="ion-text-end">
-                <a href="#" style={{ fontSize: "80%", color: "#808080" }}>
+                <a
+                  href="#"
+                  style={{
+                    fontSize: "80%",
+                    color: "#808080",
+                    marginRight: "5px"
+                  }}
+                >
                   Forgot your Password?
                 </a>
               </div>

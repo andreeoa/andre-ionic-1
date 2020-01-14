@@ -75,10 +75,3 @@ http://ionicframework.com/docs/theming/ */
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
 }
-
-.signin-item {
-  --highlight-color-focused: none;
-  --border-color: #d7d8da;
-  --border-radius: 25px;
-  --border-width: 0.5px;
-}
