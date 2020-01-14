@@ -24,6 +24,8 @@ import "@ionic/react/css/display.css";
 import "./theme/variables.css";
 import Products from "./pages/Products";
 import Users from "./pages/Users";
+import User from "./pages/User";
+import SignIn from "./pages/SignIn";
 
 const App: React.FC = () => (
   <IonApp>
@@ -32,6 +34,8 @@ const App: React.FC = () => (
         <Route path="/home" component={Home} exact={true} />
         <Route path="/products" component={Products} exact={true} />
         <Route path="/users" component={Users} exact={true} />
+        <Route path="/user/:id" component={User} exact={true} />
+        <Route path="/signin" component={SignIn} exact={true} />
         <Route exact path="/" render={() => <Redirect to="/home" />} />
       </IonRouterOutlet>
     </IonReactRouter>

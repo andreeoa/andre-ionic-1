@@ -7,8 +7,7 @@ import {
   IonList,
   IonItem,
   IonLabel,
-  IonLoading,
-  IonButton
+  IonLoading
 } from "@ionic/react";
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
@@ -21,7 +20,7 @@ const Users: React.FC = ({ userData, fetchUsers }: any) => {
   const userList = (
     <IonList>
       {userData.users.map((user: any) => (
-        <IonItem key={user.id}>
+        <IonItem key={user.id} routerLink={`/user/${user.id}`}>
           <IonLabel>{user.name}</IonLabel>
         </IonItem>
       ))}
@@ -43,7 +42,6 @@ const Users: React.FC = ({ userData, fetchUsers }: any) => {
         ) : (
           userList
         )}
-        <IonButton onClick={() => fetchUsers()}>Click Me</IonButton>
       </IonContent>
     </IonPage>
   );
