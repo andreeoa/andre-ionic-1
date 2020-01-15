@@ -12,11 +12,10 @@ import {
   IonItem,
   IonIcon,
   IonInput,
-  IonLabel,
-  IonList
+  IonLabel
 } from "@ionic/react";
 import React from "react";
-import { search } from "ionicons/icons";
+import { search, call, mail } from "ionicons/icons";
 import styles from "../css/signin.module.css";
 
 const Home: React.FC = () => {
@@ -63,6 +62,20 @@ const Home: React.FC = () => {
             <IonCol>
               <IonItem lines="none" style={{ "--background": "#dff2f3" }}>
                 <IonLabel>Contact Us</IonLabel>
+              </IonItem>
+            </IonCol>
+          </IonRow>
+          <IonRow>
+            <IonCol>
+              <IonItem lines="none">
+                <IonIcon icon={call} slot="start" />
+                <IonLabel>Tel: 012-3456789</IonLabel>
+              </IonItem>
+              <IonItem lines="none">
+                <IonIcon icon={mail} slot="start" />
+                <IonLabel>
+                  Email: <a href="#">e.mobility@e-oasia.com</a>
+                </IonLabel>
               </IonItem>
             </IonCol>
           </IonRow>

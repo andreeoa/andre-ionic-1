@@ -27,6 +27,7 @@ import Users from "./pages/Users";
 import User from "./pages/User";
 import SignIn from "./pages/SignIn";
 import Help from "./pages/Help";
+import ForgotPassword from "./pages/ForgotPassword";
 
 const App: React.FC = () => (
   <IonApp>
@@ -38,6 +39,11 @@ const App: React.FC = () => (
         <Route path="/user/:id" component={User} exact={true} />
         <Route path="/signin" component={SignIn} exact={true} />
         <Route path="/help" component={Help} exact={true} />
+        <Route
+          path="/forgot-password"
+          component={ForgotPassword}
+          exact={true}
+        />
         <Route exact path="/" render={() => <Redirect to="/home" />} />
       </IonRouterOutlet>
     </IonReactRouter>
