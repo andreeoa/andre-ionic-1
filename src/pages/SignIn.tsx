@@ -1,11 +1,8 @@
 import {
   IonContent,
-  IonHeader,
   IonPage,
-  IonTitle,
   IonToolbar,
   IonItem,
-  IonLabel,
   IonInput,
   IonIcon,
   IonButton,
@@ -28,6 +25,10 @@ const SignIn: React.FC = ({ history }: any) => {
   const gotoForgotPassword = (e: any) => {
     e.preventDefault();
     history.push("/forgot-password");
+  };
+  const gotoExperienceOurSolution = (e: any) => {
+    e.preventDefault();
+    history.push("/experience-our-solution");
   };
   return (
     <IonPage>
@@ -107,7 +108,11 @@ const SignIn: React.FC = ({ history }: any) => {
       </IonContent>
       <IonFooter className="ion-text-center">
         <IonToolbar>
-          <a href="" style={{ color: "#808080" }}>
+          <a
+            href="!#"
+            onClick={gotoExperienceOurSolution}
+            style={{ color: "#808080" }}
+          >
             Experience Our Solution
           </a>
         </IonToolbar>

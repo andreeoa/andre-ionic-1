@@ -28,6 +28,7 @@ import User from "./pages/User";
 import SignIn from "./pages/SignIn";
 import Help from "./pages/Help";
 import ForgotPassword from "./pages/ForgotPassword";
+import ExperienceOurSolution from "./pages/ExperienceOurSolution";
 
 const App: React.FC = () => (
   <IonApp>
@@ -42,6 +43,11 @@ const App: React.FC = () => (
         <Route
           path="/forgot-password"
           component={ForgotPassword}
+          exact={true}
+        />
+        <Route
+          path="/experience-our-solution"
+          component={ExperienceOurSolution}
           exact={true}
         />
         <Route exact path="/" render={() => <Redirect to="/home" />} />

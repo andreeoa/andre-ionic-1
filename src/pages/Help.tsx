@@ -53,7 +53,7 @@ const Home: React.FC = () => {
                   Login using a valid e.Mobility System User ID and Password.
                 </li>
                 <li>
-                  Contact your system admin for authorization related inquiry
+                  Contact your system admin for authorization related inquiry.
                 </li>
               </ul>
             </IonCol>
@@ -74,7 +74,8 @@ const Home: React.FC = () => {
               <IonItem lines="none">
                 <IonIcon icon={mail} slot="start" />
                 <IonLabel>
-                  Email: <a href="#">e.mobility@e-oasia.com</a>
+                  Email:{" "}
+                  <a href="javascript:void(0);">e.mobility@e-oasia.com</a>
                 </IonLabel>
               </IonItem>
             </IonCol>
