@@ -74,8 +74,7 @@ const Home: React.FC = () => {
               <IonItem lines="none">
                 <IonIcon icon={mail} slot="start" />
                 <IonLabel>
-                  Email:{" "}
-                  <a href="javascript:void(0);">e.mobility@e-oasia.com</a>
+                  Email: <a href="#">e.mobility@e-oasia.com</a>
                 </IonLabel>
               </IonItem>
             </IonCol>

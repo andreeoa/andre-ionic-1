@@ -65,7 +65,7 @@ const ExperienceOurSolution: React.FC = () => {
       <IonContent className="ion-padding">
         <IonSlides pager={true} options={slideOpts}>
           {slides.map(slide => (
-            <IonSlide>
+            <IonSlide key={slide.id}>
               <IonGrid>
                 <IonRow>
                   <IonCol>
