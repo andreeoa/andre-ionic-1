@@ -16,7 +16,7 @@ import { fetchUsers } from "../redux/users/actions";
 const Users: React.FC = ({ userData, fetchUsers }: any) => {
   useEffect(() => {
     fetchUsers();
-  }, []);
+  }, [fetchUsers]);
   const userList = (
     <IonList>
       {userData.users.map((user: any) => (

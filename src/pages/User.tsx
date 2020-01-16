@@ -21,7 +21,7 @@ const User: React.FC = ({ match, fetchUser, userData }: any) => {
   const { user } = userData;
   useEffect(() => {
     fetchUser(match.params.id);
-  }, []);
+  }, [fetchUser, match.params.id]);
 
   const userCard = (
     <IonCard>
