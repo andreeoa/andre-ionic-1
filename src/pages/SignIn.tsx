@@ -32,19 +32,13 @@ const SignIn: React.FC = ({ history }: any) => {
   };
   return (
     <IonPage>
+      <header>
+        <IonItem lines="none" style={{ marginBottom: "60px" }}>
+          <IonIcon icon={helpCircleOutline} slot="end" onClick={gotoHelp} />
+        </IonItem>
+      </header>
       <IonContent className="ion-padding">
         <IonGrid>
-          <IonRow>
-            <IonCol>
-              <IonItem lines="none" style={{ marginBottom: "60px" }}>
-                <IonIcon
-                  icon={helpCircleOutline}
-                  slot="end"
-                  onClick={gotoHelp}
-                />
-              </IonItem>
-            </IonCol>
-          </IonRow>
           <IonRow>
             <IonCol>
               <IonItem lines="none" className="ion-margin-vertical">
@@ -106,7 +100,7 @@ const SignIn: React.FC = ({ history }: any) => {
           </IonRow>
         </IonGrid>
       </IonContent>
-      <IonFooter className="ion-text-center">
+      <footer className="ion-text-center">
         <IonToolbar>
           <a
             href="!#"
@@ -116,7 +110,7 @@ const SignIn: React.FC = ({ history }: any) => {
             Experience Our Solution
           </a>
         </IonToolbar>
-      </IonFooter>
+      </footer>
     </IonPage>
   );
 };
