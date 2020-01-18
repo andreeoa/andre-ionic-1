@@ -1,5 +1,7 @@
 {
   "name": "andre-ionic-1",
-  "integrations": {},
+  "integrations": {
+    "capacitor": {}
+  },
   "type": "react"
 }

@@ -27,16 +27,16 @@ const ForgotPassword: React.FC = ({ history }: any) => {
   return (
     <IonPage>
       <header>
-        <IonItem lines="none" style={{ marginBottom: "60px" }}>
+        <IonItem lines="none">
           <IonIcon icon={arrowBack} onClick={gotoSignIn} />
           <IonIcon icon={helpCircleOutline} slot="end" onClick={gotoHelp} />
         </IonItem>
       </header>
       <IonContent className="ion-padding">
         <IonGrid>
-          <IonRow>
+          <IonRow style={{ marginTop: "70px" }}>
             <IonCol>
-              <IonItem lines="none" className="ion-margin-vertical">
+              <IonItem lines="none">
                 <IonImg src={Logo} />
               </IonItem>
             </IonCol>

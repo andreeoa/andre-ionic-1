@@ -1,0 +1,8 @@
+{
+  "appId": "io.ionic.starter",
+  "appName": "andre-ionic-1",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "build",
+  "cordova": {}
+}

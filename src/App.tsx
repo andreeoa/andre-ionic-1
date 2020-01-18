@@ -29,6 +29,7 @@ import SignIn from "./pages/SignIn";
 import Help from "./pages/Help";
 import ForgotPassword from "./pages/ForgotPassword";
 import ExperienceOurSolution from "./pages/ExperienceOurSolution";
+import Tabs from "./pages/Tabs";
 
 const App: React.FC = () => (
   <IonApp>
@@ -50,8 +51,9 @@ const App: React.FC = () => (
           component={ExperienceOurSolution}
           exact={true}
         />
-        <Route exact path="/" render={() => <Redirect to="/home" />} />
+        <Route exact path="/" render={() => <Redirect to="/signin" />} />
       </IonRouterOutlet>
+      <Tabs />
     </IonReactRouter>
   </IonApp>
 );
