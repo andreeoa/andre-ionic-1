@@ -37,7 +37,12 @@ const SignIn: React.FC = ({ history }: any) => {
     <IonPage>
       <header>
         <IonItem lines="none">
-          <IonIcon icon={helpCircleOutline} slot="end" onClick={gotoHelp} />
+          <IonIcon
+            icon={helpCircleOutline}
+            slot="end"
+            style={{ fontSize: "35px" }}
+            onClick={gotoHelp}
+          />
         </IonItem>
       </header>
       <IonContent className="ion-padding">

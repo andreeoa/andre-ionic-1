@@ -10,7 +10,6 @@ import {
   IonRow,
   IonCol,
   IonCard,
-  IonCardContent,
   IonSlides,
   IonSlide,
   IonLabel,
@@ -18,34 +17,64 @@ import {
   IonButton
 } from "@ionic/react";
 import React from "react";
-import { filing, checkmark, cube } from "ionicons/icons";
+import { beer, football, paw, snow } from "ionicons/icons";
 
 const Dashboard: React.FC = ({ history }: any) => {
-  const avatar = `https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y`;
+  const avatar = `https://image.flaticon.com/icons/svg/234/234694.svg`;
   const slideOpts = {
     initialSlide: 0,
     speed: 400
   };
+  const statistics = [
+    {
+      id: 1,
+      title: "Monthy Target Sales",
+      icon: beer,
+      percent: 45,
+      color: "primary"
+    },
+    {
+      id: 2,
+      title: "Daily Sales order (MYR)",
+      icon: football,
+      percent: 78,
+      color: "secondary"
+    },
+    {
+      id: 3,
+      title: "MTD Sales Order (MYR)",
+      icon: paw,
+      percent: 94,
+      color: "tertiary"
+    },
+    {
+      id: 4,
+      title: "MTD Sales Visits",
+      icon: snow,
+      percent: 32,
+      color: "success"
+    }
+  ];
   const apps = [
     {
       id: 1,
       name: "eApproval",
-      image: null
+      image: "https://image.flaticon.com/icons/svg/2399/2399630.svg"
     },
     {
       id: 2,
       name: "Steelaris Transporter",
-      image: null
+      image: "https://image.flaticon.com/icons/svg/685/685842.svg"
     },
     {
       id: 3,
       name: "EMM Wipro Unza",
-      image: null
+      image: "https://image.flaticon.com/icons/svg/2144/2144314.svg"
     },
     {
       id: 4,
       name: "ESFA Wipro Unza",
-      image: null
+      image: "https://image.flaticon.com/icons/svg/2432/2432908.svg"
     }
   ];
   const inboxes = [
@@ -53,6 +82,7 @@ const Dashboard: React.FC = ({ history }: any) => {
       id: 1,
       userName: "Jessica Tan",
       subject: "Expense Approval",
+      image: "https://image.flaticon.com/icons/svg/1087/1087840.svg",
       points: {
         value: 123.0,
         sign: "MYR"
@@ -62,6 +92,7 @@ const Dashboard: React.FC = ({ history }: any) => {
       id: 2,
       userName: "Andre Alvarico",
       subject: "Pending Acceptance",
+      image: "https://image.flaticon.com/icons/svg/214/214327.svg",
       points: {
         value: 764.234,
         sign: "TON"
@@ -71,6 +102,7 @@ const Dashboard: React.FC = ({ history }: any) => {
       id: 3,
       userName: "Aljhun Caputolan",
       subject: "Leave Approval",
+      image: "https://image.flaticon.com/icons/svg/1146/1146296.svg",
       points: {
         value: 10.0,
         sign: "DAYS"
@@ -82,22 +114,22 @@ const Dashboard: React.FC = ({ history }: any) => {
       id: 1,
       userName: "Andre Alvarico",
       subject: "Expense Approval",
-      image: null,
-      status: "Rejected"
+      image: "https://image.flaticon.com/icons/svg/1169/1169097.svg",
+      status: 1
     },
     {
       id: 2,
       userName: "Jessica Tan",
       subject: "Leave Approval",
-      image: null,
-      status: "Accepted"
+      image: "https://image.flaticon.com/icons/svg/2411/2411109.svg",
+      status: 0
     },
     {
       id: 3,
       userName: "Aljhun Caputolan",
       subject: "Expense Approval",
-      image: null,
-      status: "Accepted"
+      image: "https://image.flaticon.com/icons/svg/2445/2445284.svg",
+      status: 1
     }
   ];
   return (
@@ -122,23 +154,38 @@ const Dashboard: React.FC = ({ history }: any) => {
                     <IonLabel>eApproval</IonLabel>
                   </IonCol>
                 </IonRow>
-                <IonRow>
-                  {[1, 2, 3, 4].map((num: number) => (
-                    <IonCol size="6" className="ion-margin-vertical" key={num}>
+                <IonRow className="ion-padding">
+                  {statistics.map((stat: any) => (
+                    <IonCol size="6" key={stat.id}>
                       <IonItem lines="none">
                         <IonIcon
-                          icon={filing}
+                          icon={stat.icon}
+                          slot="start"
                           style={{
-                            marginBottom: "35px",
-                            marginRight: "10px",
-                            fontSize: "35px"
+                            margin: "unset",
+                            position: "relative",
+                            right: "10px"
                           }}
                         />
-                        <div>
-                          <h1 style={{ margin: "unset" }}>75%</h1>
-                          <span>Monthly Target Sales</span>
-                        </div>
+                        <IonLabel
+                          style={{ fontSize: "30px" }}
+                          color={stat.color}
+                        >
+                          {stat.percent}%
+                        </IonLabel>
                       </IonItem>
+                      <p
+                        style={{
+                          position: "relative",
+                          bottom: "25px",
+                          marginLeft: "43px",
+                          textAlign: "left",
+                          fontSize: "15px",
+                          lineHeight: "20px"
+                        }}
+                      >
+                        {stat.title}
+                      </p>
                     </IonCol>
                   ))}
                 </IonRow>
@@ -181,10 +228,12 @@ const Dashboard: React.FC = ({ history }: any) => {
                   >
                     <IonItem
                       lines="none"
-                      style={{ minHeight: "70px", display: "inline-flex" }}
+                      style={{ minHeight: "70px", display: "flex" }}
                     >
-                      <IonIcon icon={cube} style={{ fontSize: "30px" }} />
-                      <p style={{ margin: "0 0 0 10px" }}>{app.name}</p>
+                      <IonAvatar slot="start">
+                        <img src={app.image} alt="" />
+                      </IonAvatar>
+                      <p style={{ margin: "0px" }}>{app.name}</p>
                     </IonItem>
                   </IonCard>
                 </IonCol>
@@ -214,17 +263,16 @@ const Dashboard: React.FC = ({ history }: any) => {
                   >
                     <IonItem lines="none">
                       <IonAvatar slot="start">
-                        <img
-                          src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y"
-                          alt=""
-                        />
+                        <img src={inbox.image} alt="" />
                       </IonAvatar>
                       <IonLabel>
-                        <h3>{inbox.subject}</h3>
+                        <h2>{inbox.subject}</h2>
                         <p>{inbox.userName}</p>
                       </IonLabel>
                       <span slot="end" style={{ textAlign: "right" }}>
-                        <p style={{ margin: "unset", fontWeight: "bold" }}>
+                        <p
+                          style={{ margin: "0px 0px 3px", fontWeight: "bold" }}
+                        >
                           205.50
                         </p>
                         <p style={{ margin: "unset", fontSize: "13px" }}>MYR</p>
@@ -258,17 +306,17 @@ const Dashboard: React.FC = ({ history }: any) => {
                   >
                     <IonItem lines="none">
                       <IonAvatar slot="start">
-                        <img
-                          src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y"
-                          alt=""
-                        />
+                        <img src={activity.image} alt="" />
                       </IonAvatar>
                       <IonLabel>
-                        <h3>{activity.subject}</h3>
+                        <h2>{activity.subject}</h2>
                         <p>{activity.userName}</p>
                       </IonLabel>
-                      <IonButton color="success" fill="outline">
-                        {activity.status}
+                      <IonButton
+                        color={activity.status ? "success" : "danger"}
+                        fill="outline"
+                      >
+                        {activity.status ? "Accepted" : "Rejected"}
                       </IonButton>
                     </IonItem>
                   </IonCard>

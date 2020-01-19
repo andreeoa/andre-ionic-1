@@ -29,7 +29,7 @@ const Home: React.FC = () => {
           <IonTitle>Help</IonTitle>
         </IonToolbar>
       </IonHeader>
-      <IonContent className="ion-padding">
+      <IonContent>
         <IonGrid>
           <IonRow>
             <IonCol>
@@ -48,7 +48,7 @@ const Home: React.FC = () => {
           </IonRow>
           <IonRow>
             <IonCol>
-              <ul className={styles.dashed}>
+              <ul className={`${styles.dashed} ion-margin-end`}>
                 <li>
                   Login using a valid e.Mobility System User ID and Password.
                 </li>

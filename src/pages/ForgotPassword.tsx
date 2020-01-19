@@ -11,7 +11,7 @@ import {
   IonCol
 } from "@ionic/react";
 import React from "react";
-import { person, helpCircleOutline, arrowBack } from "ionicons/icons";
+import { person, helpCircleOutline } from "ionicons/icons";
 import Logo from "../img/eoa-logo.png";
 import styles from "../css/signin.module.css";
 
@@ -28,8 +28,12 @@ const ForgotPassword: React.FC = ({ history }: any) => {
     <IonPage>
       <header>
         <IonItem lines="none">
-          <IonIcon icon={arrowBack} onClick={gotoSignIn} />
-          <IonIcon icon={helpCircleOutline} slot="end" onClick={gotoHelp} />
+          <IonIcon
+            icon={helpCircleOutline}
+            slot="end"
+            style={{ fontSize: "35px" }}
+            onClick={gotoHelp}
+          />
         </IonItem>
       </header>
       <IonContent className="ion-padding">
