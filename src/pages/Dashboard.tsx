@@ -14,10 +14,11 @@ import {
   IonSlides,
   IonSlide,
   IonLabel,
-  IonIcon
+  IonIcon,
+  IonButton
 } from "@ionic/react";
 import React from "react";
-import { filing } from "ionicons/icons";
+import { filing, checkmark, cube } from "ionicons/icons";
 
 const Dashboard: React.FC = ({ history }: any) => {
   const avatar = `https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y`;
@@ -178,7 +179,13 @@ const Dashboard: React.FC = ({ history }: any) => {
                       margin: "unset"
                     }}
                   >
-                    <IonCardContent>{app.name}</IonCardContent>
+                    <IonItem
+                      lines="none"
+                      style={{ minHeight: "70px", display: "inline-flex" }}
+                    >
+                      <IonIcon icon={cube} style={{ fontSize: "30px" }} />
+                      <p style={{ margin: "0 0 0 10px" }}>{app.name}</p>
+                    </IonItem>
                   </IonCard>
                 </IonCol>
               ))}
@@ -190,7 +197,9 @@ const Dashboard: React.FC = ({ history }: any) => {
                   style={{ "--background": "none", margin: "-15px -15px" }}
                 >
                   <span>Inbox</span>
-                  <span slot="end">See All</span>
+                  <span slot="end" style={{ color: "#0000EE" }}>
+                    See All
+                  </span>
                 </IonItem>
               </IonCol>
             </IonRow>
@@ -203,10 +212,24 @@ const Dashboard: React.FC = ({ history }: any) => {
                       margin: "unset"
                     }}
                   >
-                    <IonCardContent>
-                      <h2>{inbox.subject}</h2>
-                      <p>{inbox.userName}</p>
-                    </IonCardContent>
+                    <IonItem lines="none">
+                      <IonAvatar slot="start">
+                        <img
+                          src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y"
+                          alt=""
+                        />
+                      </IonAvatar>
+                      <IonLabel>
+                        <h3>{inbox.subject}</h3>
+                        <p>{inbox.userName}</p>
+                      </IonLabel>
+                      <span slot="end" style={{ textAlign: "right" }}>
+                        <p style={{ margin: "unset", fontWeight: "bold" }}>
+                          205.50
+                        </p>
+                        <p style={{ margin: "unset", fontSize: "13px" }}>MYR</p>
+                      </span>
+                    </IonItem>
                   </IonCard>
                 </IonCol>
               ))}
@@ -218,7 +241,9 @@ const Dashboard: React.FC = ({ history }: any) => {
                   style={{ "--background": "none", margin: "-15px -15px" }}
                 >
                   <span>Activity</span>
-                  <span slot="end">See All</span>
+                  <span slot="end" style={{ color: "#0000EE" }}>
+                    See All
+                  </span>
                 </IonItem>
               </IonCol>
             </IonRow>
@@ -231,10 +256,21 @@ const Dashboard: React.FC = ({ history }: any) => {
                       margin: "unset"
                     }}
                   >
-                    <IonCardContent>
-                      <h2>{activity.subject}</h2>
-                      <p>{activity.userName}</p>
-                    </IonCardContent>
+                    <IonItem lines="none">
+                      <IonAvatar slot="start">
+                        <img
+                          src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y"
+                          alt=""
+                        />
+                      </IonAvatar>
+                      <IonLabel>
+                        <h3>{activity.subject}</h3>
+                        <p>{activity.userName}</p>
+                      </IonLabel>
+                      <IonButton color="success" fill="outline">
+                        {activity.status}
+                      </IonButton>
+                    </IonItem>
                   </IonCard>
                 </IonCol>
               ))}
