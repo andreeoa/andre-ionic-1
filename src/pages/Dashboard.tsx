@@ -258,7 +258,7 @@ const Dashboard: React.FC = ({ history }: any) => {
                         <img src={inbox.image} alt="" />
                       </IonAvatar>
                       <IonLabel>
-                        <h2 style={{ fontSize: "4vw" }}>{inbox.subject}</h2>
+                        <h2 style={{ fontSize: "4.5vw" }}>{inbox.subject}</h2>
                         <p style={{ fontSize: "4vw" }}>{inbox.userName}</p>
                       </IonLabel>
                       <span slot="end" style={{ textAlign: "right" }}>
@@ -301,7 +301,9 @@ const Dashboard: React.FC = ({ history }: any) => {
                         <img src={activity.image} alt="" />
                       </IonAvatar>
                       <IonLabel>
-                        <h2 style={{ fontSize: "4vw" }}>{activity.subject}</h2>
+                        <h2 style={{ fontSize: "4.5vw" }}>
+                          {activity.subject}
+                        </h2>
                         <p style={{ fontSize: "4vw" }}>{activity.userName}</p>
                       </IonLabel>
                       <IonButton
