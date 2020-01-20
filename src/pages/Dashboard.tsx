@@ -2,8 +2,6 @@ import {
   IonContent,
   IonHeader,
   IonPage,
-  IonTitle,
-  IonToolbar,
   IonAvatar,
   IonItem,
   IonGrid,
@@ -14,13 +12,15 @@ import {
   IonSlide,
   IonLabel,
   IonIcon,
-  IonButton
+  IonButton,
+  IonFooter
 } from "@ionic/react";
 import React from "react";
 import { beer, football, paw, snow } from "ionicons/icons";
+import MainMenu from "../components/MainMenu";
+import MainToolbar from "../components/MainToolbar";
 
 const Dashboard: React.FC = ({ history }: any) => {
-  const avatar = `https://image.flaticon.com/icons/svg/234/234694.svg`;
   const slideOpts = {
     initialSlide: 0,
     speed: 400
@@ -135,14 +135,7 @@ const Dashboard: React.FC = ({ history }: any) => {
   return (
     <IonPage>
       <IonHeader>
-        <IonToolbar>
-          <IonItem lines="none">
-            <IonTitle style={{ fontWeight: "bold" }}>Dashboard</IonTitle>
-            <IonAvatar slot="end" onClick={() => history.push("/profile")}>
-              <img src={avatar} alt="" />
-            </IonAvatar>
-          </IonItem>
-        </IonToolbar>
+        <MainToolbar title="Dashboard" />
       </IonHeader>
       <IonContent>
         <div>
@@ -226,14 +219,13 @@ const Dashboard: React.FC = ({ history }: any) => {
                       margin: "unset"
                     }}
                   >
-                    <IonItem
-                      lines="none"
-                      style={{ minHeight: "70px", display: "flex" }}
-                    >
+                    <IonItem lines="none" style={{ display: "flex" }}>
                       <IonAvatar slot="start">
                         <img src={app.image} alt="" />
                       </IonAvatar>
-                      <p style={{ margin: "0px" }}>{app.name}</p>
+                      <p style={{ margin: "0px", fontSize: "4vw" }}>
+                        {app.name}
+                      </p>
                     </IonItem>
                   </IonCard>
                 </IonCol>
@@ -266,8 +258,8 @@ const Dashboard: React.FC = ({ history }: any) => {
                         <img src={inbox.image} alt="" />
                       </IonAvatar>
                       <IonLabel>
-                        <h2>{inbox.subject}</h2>
-                        <p>{inbox.userName}</p>
+                        <h2 style={{ fontSize: "4vw" }}>{inbox.subject}</h2>
+                        <p style={{ fontSize: "4vw" }}>{inbox.userName}</p>
                       </IonLabel>
                       <span slot="end" style={{ textAlign: "right" }}>
                         <p
@@ -309,8 +301,8 @@ const Dashboard: React.FC = ({ history }: any) => {
                         <img src={activity.image} alt="" />
                       </IonAvatar>
                       <IonLabel>
-                        <h2>{activity.subject}</h2>
-                        <p>{activity.userName}</p>
+                        <h2 style={{ fontSize: "4vw" }}>{activity.subject}</h2>
+                        <p style={{ fontSize: "4vw" }}>{activity.userName}</p>
                       </IonLabel>
                       <IonButton
                         color={activity.status ? "success" : "danger"}
@@ -326,6 +318,9 @@ const Dashboard: React.FC = ({ history }: any) => {
           </IonGrid>
         </div>
       </IonContent>
+      <IonFooter>
+        <MainMenu />
+      </IonFooter>
     </IonPage>
   );
 };

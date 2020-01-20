@@ -29,7 +29,11 @@ import SignIn from "./pages/SignIn";
 import Help from "./pages/Help";
 import ForgotPassword from "./pages/ForgotPassword";
 import ExperienceOurSolution from "./pages/ExperienceOurSolution";
-import Tabs from "./pages/Tabs";
+import Dashboard from "./pages/Dashboard";
+import Profile from "./pages/Profile";
+import Activity from "./pages/Activity";
+import Inbox from "./pages/Inbox";
+import Settings from "./pages/Settings";
 
 const App: React.FC = () => (
   <IonApp>
@@ -51,9 +55,13 @@ const App: React.FC = () => (
           component={ExperienceOurSolution}
           exact={true}
         />
+        <Route path="/dashboard" component={Dashboard} exact={true} />
+        <Route path="/activity" component={Activity} exact={true} />
+        <Route path="/inbox" component={Inbox} exact={true} />
+        <Route path="/settings" component={Settings} exact={true} />
+        <Route path="/profile" component={Profile} exact={true} />
         <Route exact path="/" render={() => <Redirect to="/signin" />} />
       </IonRouterOutlet>
-      <Tabs />
     </IonReactRouter>
   </IonApp>
 );

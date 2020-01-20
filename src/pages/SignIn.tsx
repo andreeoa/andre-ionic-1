@@ -40,7 +40,7 @@ const SignIn: React.FC = ({ history }: any) => {
           <IonIcon
             icon={helpCircleOutline}
             slot="end"
-            style={{ fontSize: "35px" }}
+            style={{ fontSize: "30px" }}
             onClick={gotoHelp}
           />
         </IonItem>

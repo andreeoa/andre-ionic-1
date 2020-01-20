@@ -31,7 +31,7 @@ const ForgotPassword: React.FC = ({ history }: any) => {
           <IonIcon
             icon={helpCircleOutline}
             slot="end"
-            style={{ fontSize: "35px" }}
+            style={{ fontSize: "3px" }}
             onClick={gotoHelp}
           />
         </IonItem>

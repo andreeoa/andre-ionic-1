@@ -2,12 +2,13 @@ import {
   IonContent,
   IonHeader,
   IonPage,
-  IonTitle,
-  IonToolbar,
   IonButton,
-  IonAlert
+  IonAlert,
+  IonFooter,
+  IonToolbar
 } from "@ionic/react";
 import React, { useState } from "react";
+import MainMenu from "../components/MainMenu";
 
 const Profile: React.FC = ({ history }: any) => {
   const [showAlert, setShowAlert] = useState(false);
@@ -17,9 +18,7 @@ const Profile: React.FC = ({ history }: any) => {
   return (
     <IonPage>
       <IonHeader>
-        <IonToolbar>
-          <IonTitle>Profile</IonTitle>
-        </IonToolbar>
+        <IonToolbar></IonToolbar>
       </IonHeader>
       <IonContent className="ion-padding">
         <h2>Profile Page</h2>
@@ -46,6 +45,9 @@ const Profile: React.FC = ({ history }: any) => {
           ]}
         />
       </IonContent>
+      <IonFooter>
+        <MainMenu />
+      </IonFooter>
     </IonPage>
   );
 };
