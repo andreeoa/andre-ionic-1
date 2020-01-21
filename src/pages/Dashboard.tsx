@@ -12,13 +12,14 @@ import {
   IonSlide,
   IonLabel,
   IonIcon,
-  IonButton,
   IonFooter
 } from "@ionic/react";
 import React from "react";
 import { beer, football, paw, snow } from "ionicons/icons";
 import MainMenu from "../components/MainMenu";
 import MainToolbar from "../components/MainToolbar";
+import ActivityItem from "../components/Activity/ActivityItem";
+import InboxItem from "../components/Inbox/InboxItem";
 
 const Dashboard: React.FC = ({ history }: any) => {
   const slideOpts = {
@@ -75,61 +76,6 @@ const Dashboard: React.FC = ({ history }: any) => {
       id: 4,
       name: "ESFA Wipro Unza",
       image: "https://image.flaticon.com/icons/svg/2432/2432908.svg"
-    }
-  ];
-  const inboxes = [
-    {
-      id: 1,
-      userName: "Jessica Tan",
-      subject: "Expense Approval",
-      image: "https://image.flaticon.com/icons/svg/1087/1087840.svg",
-      points: {
-        value: 123.0,
-        sign: "MYR"
-      }
-    },
-    {
-      id: 2,
-      userName: "Andre Alvarico",
-      subject: "Pending Acceptance",
-      image: "https://image.flaticon.com/icons/svg/214/214327.svg",
-      points: {
-        value: 764.234,
-        sign: "TON"
-      }
-    },
-    {
-      id: 3,
-      userName: "Aljhun Caputolan",
-      subject: "Leave Approval",
-      image: "https://image.flaticon.com/icons/svg/1146/1146296.svg",
-      points: {
-        value: 10.0,
-        sign: "DAYS"
-      }
-    }
-  ];
-  const activities = [
-    {
-      id: 1,
-      userName: "Andre Alvarico",
-      subject: "Expense Approval",
-      image: "https://image.flaticon.com/icons/svg/1169/1169097.svg",
-      status: 1
-    },
-    {
-      id: 2,
-      userName: "Jessica Tan",
-      subject: "Leave Approval",
-      image: "https://image.flaticon.com/icons/svg/2411/2411109.svg",
-      status: 0
-    },
-    {
-      id: 3,
-      userName: "Aljhun Caputolan",
-      subject: "Expense Approval",
-      image: "https://image.flaticon.com/icons/svg/2445/2445284.svg",
-      status: 1
     }
   ];
   return (
@@ -245,34 +191,7 @@ const Dashboard: React.FC = ({ history }: any) => {
               </IonCol>
             </IonRow>
             <IonRow>
-              {inboxes.map(inbox => (
-                <IonCol size="12" key={inbox.id}>
-                  <IonCard
-                    style={{
-                      "--background": "#fff",
-                      margin: "unset"
-                    }}
-                  >
-                    <IonItem lines="none">
-                      <IonAvatar slot="start">
-                        <img src={inbox.image} alt="" />
-                      </IonAvatar>
-                      <IonLabel>
-                        <h2 style={{ fontSize: "4.5vw" }}>{inbox.subject}</h2>
-                        <p style={{ fontSize: "4vw" }}>{inbox.userName}</p>
-                      </IonLabel>
-                      <span slot="end" style={{ textAlign: "right" }}>
-                        <p
-                          style={{ margin: "0px 0px 3px", fontWeight: "bold" }}
-                        >
-                          205.50
-                        </p>
-                        <p style={{ margin: "unset", fontSize: "13px" }}>MYR</p>
-                      </span>
-                    </IonItem>
-                  </IonCard>
-                </IonCol>
-              ))}
+              <InboxItem />
             </IonRow>
             <IonRow className="ion-margin-top">
               <IonCol>
@@ -288,34 +207,7 @@ const Dashboard: React.FC = ({ history }: any) => {
               </IonCol>
             </IonRow>
             <IonRow>
-              {activities.map(activity => (
-                <IonCol size="12" key={activity.id}>
-                  <IonCard
-                    style={{
-                      "--background": "#fff",
-                      margin: "unset"
-                    }}
-                  >
-                    <IonItem lines="none">
-                      <IonAvatar slot="start">
-                        <img src={activity.image} alt="" />
-                      </IonAvatar>
-                      <IonLabel>
-                        <h2 style={{ fontSize: "4.5vw" }}>
-                          {activity.subject}
-                        </h2>
-                        <p style={{ fontSize: "4vw" }}>{activity.userName}</p>
-                      </IonLabel>
-                      <IonButton
-                        color={activity.status ? "success" : "danger"}
-                        fill="outline"
-                      >
-                        {activity.status ? "Accepted" : "Rejected"}
-                      </IonButton>
-                    </IonItem>
-                  </IonCard>
-                </IonCol>
-              ))}
+              <ActivityItem />
             </IonRow>
           </IonGrid>
         </div>

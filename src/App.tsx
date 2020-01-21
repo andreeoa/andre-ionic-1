@@ -34,6 +34,7 @@ import Profile from "./pages/Profile";
 import Activity from "./pages/Activity";
 import Inbox from "./pages/Inbox";
 import Settings from "./pages/Settings";
+import Notifications from "./pages/Notifications";
 
 const App: React.FC = () => (
   <IonApp>
@@ -60,6 +61,7 @@ const App: React.FC = () => (
         <Route path="/inbox" component={Inbox} exact={true} />
         <Route path="/settings" component={Settings} exact={true} />
         <Route path="/profile" component={Profile} exact={true} />
+        <Route path="/notifications" component={Notifications} exact={true} />
         <Route exact path="/" render={() => <Redirect to="/signin" />} />
       </IonRouterOutlet>
     </IonReactRouter>
