@@ -60,22 +60,26 @@ const Dashboard: React.FC = ({ history }: any) => {
     {
       id: 1,
       name: "eApproval",
-      image: "https://image.flaticon.com/icons/svg/2399/2399630.svg"
+      image: "https://image.flaticon.com/icons/svg/2399/2399630.svg",
+      rounterLink: "/e-approval"
     },
     {
       id: 2,
       name: "Steelaris Transporter",
-      image: "https://image.flaticon.com/icons/svg/685/685842.svg"
+      image: "https://image.flaticon.com/icons/svg/685/685842.svg",
+      rounterLink: "/e-approval"
     },
     {
       id: 3,
       name: "EMM Wipro Unza",
-      image: "https://image.flaticon.com/icons/svg/2144/2144314.svg"
+      image: "https://image.flaticon.com/icons/svg/2144/2144314.svg",
+      rounterLink: "/e-approval"
     },
     {
       id: 4,
       name: "ESFA Wipro Unza",
-      image: "https://image.flaticon.com/icons/svg/2432/2432908.svg"
+      image: "https://image.flaticon.com/icons/svg/2432/2432908.svg",
+      rounterLink: "/e-approval"
     }
   ];
   return (
@@ -165,7 +169,11 @@ const Dashboard: React.FC = ({ history }: any) => {
                       margin: "unset"
                     }}
                   >
-                    <IonItem lines="none" style={{ display: "flex" }}>
+                    <IonItem
+                      lines="none"
+                      style={{ display: "flex" }}
+                      routerLink={app.rounterLink}
+                    >
                       <IonAvatar slot="start">
                         <img src={app.image} alt="" />
                       </IonAvatar>

@@ -35,6 +35,7 @@ import Activity from "./pages/Activity";
 import Inbox from "./pages/Inbox";
 import Settings from "./pages/Settings";
 import Notifications from "./pages/Notifications";
+import eApproval from "./pages/apps/eApproval";
 
 const App: React.FC = () => (
   <IonApp>
@@ -62,6 +63,9 @@ const App: React.FC = () => (
         <Route path="/settings" component={Settings} exact={true} />
         <Route path="/profile" component={Profile} exact={true} />
         <Route path="/notifications" component={Notifications} exact={true} />
+
+        <Route path="/e-approval" component={eApproval} exact={true} />
+
         <Route exact path="/" render={() => <Redirect to="/signin" />} />
       </IonRouterOutlet>
     </IonReactRouter>
