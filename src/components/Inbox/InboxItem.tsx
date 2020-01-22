@@ -52,7 +52,7 @@ const InboxItem: React.FC = () => {
                 <h2 style={{ fontSize: "4.5vw" }}>{inbox.subject}</h2>
                 <p style={{ fontSize: "4vw" }}>{inbox.userName}</p>
               </IonLabel>
-              <span slot="end" style={{ textAlign: "right" }}>
+              <span slot="end" className="ion-text-end">
                 <p style={{ margin: "0px 0px 3px", fontWeight: "bold" }}>
                   205.50
                 </p>

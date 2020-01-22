@@ -14,7 +14,7 @@ import {
   IonHeader
 } from "@ionic/react";
 import React from "react";
-import MainMenu from "../components/MainMenu";
+import Tabs from "../components/Tabs";
 import {
   notifications,
   mail,
@@ -120,7 +120,7 @@ const Notifications: React.FC = () => {
         </IonGrid>
       </IonContent>
       <IonFooter>
-        <MainMenu />
+        <Tabs />
       </IonFooter>
     </IonPage>
   );

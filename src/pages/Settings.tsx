@@ -9,7 +9,7 @@ import {
   IonItem
 } from "@ionic/react";
 import React from "react";
-import MainMenu from "../components/MainMenu";
+import Tabs from "../components/Tabs";
 import MainToolbar from "../components/MainToolbar";
 import {
   person,
@@ -113,7 +113,7 @@ const Settings: React.FC = ({ history }: any) => {
         </IonGrid>
       </IonContent>
       <IonFooter>
-        <MainMenu />
+        <Tabs />
       </IonFooter>
     </IonPage>
   );

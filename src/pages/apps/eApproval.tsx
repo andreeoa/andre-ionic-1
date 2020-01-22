@@ -1,12 +1,9 @@
 import React from "react";
 import {
-  IonMenu,
   IonHeader,
   IonToolbar,
   IonTitle,
   IonContent,
-  IonList,
-  IonMenuToggle,
   IonItem,
   IonLabel,
   IonAvatar,
@@ -14,60 +11,18 @@ import {
   IonRow,
   IonButtons,
   IonMenuButton,
-  IonRouterOutlet,
   IonPage,
-  IonItemDivider
+  IonCol,
+  IonCard,
+  IonCardContent,
+  IonIcon
 } from "@ionic/react";
+import { beer } from "ionicons/icons";
 
 const eApproval: React.FC = ({ history }: any) => {
   const avatar = `https://image.flaticon.com/icons/svg/234/234694.svg`;
   return (
     <IonPage>
-      <IonMenu contentId="main" type="overlay">
-        <IonHeader>
-          <IonToolbar>
-            <IonTitle>Menu</IonTitle>
-          </IonToolbar>
-        </IonHeader>
-        <IonContent>
-          <IonList>
-            <IonMenuToggle autoHide={false}>
-              <IonItem
-                lines="none"
-                routerLink="/e-approval"
-                routerDirection="none"
-              >
-                <IonLabel>Home</IonLabel>
-              </IonItem>
-              <IonItem lines="none" routerLink="/dashboard">
-                <IonLabel>Leave Request Approval</IonLabel>
-                <p slot="end">23</p>
-              </IonItem>
-              <IonItem lines="none" routerLink="/dashboard">
-                <IonLabel>Expense Approval</IonLabel>
-                <p slot="end">8</p>
-              </IonItem>
-              <IonItem lines="none" routerLink="/dashboard">
-                <IonLabel>Purchase Order Approval</IonLabel>
-                <p slot="end">43</p>
-              </IonItem>
-              <IonItemDivider />
-              <IonItem lines="none" routerLink="/settings">
-                <IonLabel>Settings</IonLabel>
-              </IonItem>
-              <IonItem lines="none" routerLink="/dashboard">
-                <IonLabel>Log Out</IonLabel>
-              </IonItem>
-              <IonItemDivider />
-              <IonItem lines="none" routerLink="/dashboard">
-                <IonLabel>Back To Dashboard</IonLabel>
-              </IonItem>
-            </IonMenuToggle>
-          </IonList>
-        </IonContent>
-      </IonMenu>
-      <IonRouterOutlet id="main"></IonRouterOutlet>
-
       <IonHeader>
         <IonToolbar>
           <IonItem lines="none">
@@ -83,7 +38,49 @@ const eApproval: React.FC = ({ history }: any) => {
       </IonHeader>
       <IonContent style={{ "--background": "#dff2f3" }}>
         <IonGrid>
-          <IonRow></IonRow>
+          <IonRow>
+            {[1, 2, 3, 4].map(number => (
+              <IonCol size="6" key={number}>
+                <IonCard
+                  style={{
+                    "--background": "#fff",
+                    margin: "unset"
+                  }}
+                >
+                  <IonCardContent>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Inventore, sint.
+                  </IonCardContent>
+                </IonCard>
+              </IonCol>
+            ))}
+          </IonRow>
+          <IonRow className="ion-margin-top">
+            <IonCol>
+              <span style={{ marginLeft: "3px" }}>Menu</span>
+            </IonCol>
+          </IonRow>
+          <IonRow>
+            {[1, 2, 3, 4].map(number => (
+              <IonCol size="12" key={number}>
+                <IonCard
+                  style={{
+                    margin: "unset"
+                  }}
+                >
+                  <IonItem lines="none" routerLink="/expense-approval">
+                    <IonIcon icon={beer} style={{ fontSize: "30px" }} />
+                    <IonLabel className="ion-margin-start">
+                      Purchase Order Approval
+                    </IonLabel>
+                    <p slot="end" style={{ color: "#3880ff" }}>
+                      {number}
+                    </p>
+                  </IonItem>
+                </IonCard>
+              </IonCol>
+            ))}
+          </IonRow>
         </IonGrid>
       </IonContent>
     </IonPage>

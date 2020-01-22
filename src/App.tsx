@@ -36,11 +36,13 @@ import Inbox from "./pages/Inbox";
 import Settings from "./pages/Settings";
 import Notifications from "./pages/Notifications";
 import eApproval from "./pages/apps/eApproval";
+import ExpenseApproval from "./pages/apps/ExpenseApproval";
+import Menu from "./components/Menu";
 
 const App: React.FC = () => (
   <IonApp>
     <IonReactRouter>
-      <IonRouterOutlet>
+      <IonRouterOutlet id="main">
         <Route path="/home" component={Home} exact={true} />
         <Route path="/products" component={Products} exact={true} />
         <Route path="/users" component={Users} exact={true} />
@@ -65,9 +67,15 @@ const App: React.FC = () => (
         <Route path="/notifications" component={Notifications} exact={true} />
 
         <Route path="/e-approval" component={eApproval} exact={true} />
+        <Route
+          path="/expense-approval"
+          component={ExpenseApproval}
+          exact={true}
+        />
 
         <Route exact path="/" render={() => <Redirect to="/signin" />} />
       </IonRouterOutlet>
+      <Menu />
     </IonReactRouter>
   </IonApp>
 );

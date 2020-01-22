@@ -16,7 +16,7 @@ import {
 } from "@ionic/react";
 import React from "react";
 import { beer, football, paw, snow } from "ionicons/icons";
-import MainMenu from "../components/MainMenu";
+import Tabs from "../components/Tabs";
 import MainToolbar from "../components/MainToolbar";
 import ActivityItem from "../components/Activity/ActivityItem";
 import InboxItem from "../components/Inbox/InboxItem";
@@ -221,7 +221,7 @@ const Dashboard: React.FC = ({ history }: any) => {
         </div>
       </IonContent>
       <IonFooter>
-        <MainMenu />
+        <Tabs />
       </IonFooter>
     </IonPage>
   );

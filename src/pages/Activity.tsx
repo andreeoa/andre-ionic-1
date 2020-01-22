@@ -12,7 +12,7 @@ import {
   IonSelectOption
 } from "@ionic/react";
 import React from "react";
-import MainMenu from "../components/MainMenu";
+import Tabs from "../components/Tabs";
 import MainToolbar from "../components/MainToolbar";
 import ActivityItem from "../components/Activity/ActivityItem";
 
@@ -62,7 +62,7 @@ const Activity: React.FC = () => {
         </IonGrid>
       </IonContent>
       <IonFooter>
-        <MainMenu />
+        <Tabs />
       </IonFooter>
     </IonPage>
   );

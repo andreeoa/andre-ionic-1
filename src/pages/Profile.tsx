@@ -14,7 +14,7 @@ import {
   IonImg
 } from "@ionic/react";
 import React, { useState } from "react";
-import MainMenu from "../components/MainMenu";
+import Tabs from "../components/Tabs";
 import { lock, create } from "ionicons/icons";
 
 const Profile: React.FC = ({ history }: any) => {
@@ -122,7 +122,7 @@ const Profile: React.FC = ({ history }: any) => {
         />
       </IonContent>
       <IonFooter>
-        <MainMenu />
+        <Tabs />
       </IonFooter>
     </IonPage>
   );

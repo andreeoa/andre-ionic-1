@@ -2,25 +2,33 @@ import {
   IonContent,
   IonHeader,
   IonPage,
-  IonFooter,
+  IonTitle,
+  IonToolbar,
   IonGrid,
   IonRow,
   IonCol,
   IonItem,
   IonLabel,
   IonSelect,
-  IonSelectOption
+  IonSelectOption,
+  IonButtons,
+  IonMenuButton
 } from "@ionic/react";
 import React from "react";
-import Tabs from "../components/Tabs";
-import MainToolbar from "../components/MainToolbar";
-import InboxItem from "../components/Inbox/InboxItem";
+import ExpenseApprovalItem from "../../components/Apps/eApproval/ExpenseApprovalItem";
 
-const Inbox: React.FC = () => {
+const ExpenseApproval: React.FC = () => {
   return (
     <IonPage>
       <IonHeader>
-        <MainToolbar title="Inbox" />
+        <IonToolbar>
+          <IonItem lines="none">
+            <IonButtons slot="start">
+              <IonMenuButton />
+            </IonButtons>
+            <IonTitle style={{ fontWeight: "bold" }}>Expense Approval</IonTitle>
+          </IonItem>
+        </IonToolbar>
       </IonHeader>
       <IonContent style={{ "--background": "#dff2f3" }}>
         <IonGrid>
@@ -46,26 +54,16 @@ const Inbox: React.FC = () => {
               </IonItem>
             </IonCol>
           </IonRow>
-          <IonRow className="ion-margin-top">
-            <IonCol>
-              <IonItem
-                lines="none"
-                style={{ "--background": "none", margin: "-15px -15px" }}
-              >
-                <span>List(6)</span>
-              </IonItem>
-            </IonCol>
-          </IonRow>
           <IonRow>
-            <InboxItem />
+            <ExpenseApprovalItem />
+            <ExpenseApprovalItem />
+            <ExpenseApprovalItem />
+            <ExpenseApprovalItem />
           </IonRow>
         </IonGrid>
       </IonContent>
-      <IonFooter>
-        <Tabs />
-      </IonFooter>
     </IonPage>
   );
 };
 
-export default Inbox;
+export default ExpenseApproval;
