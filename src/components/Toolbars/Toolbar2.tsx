@@ -1,14 +1,21 @@
-import { IonTitle, IonToolbar, IonItem, IonAvatar } from "@ionic/react";
+import {
+  IonTitle,
+  IonToolbar,
+  IonItem,
+  IonAvatar,
+  IonMenuButton
+} from "@ionic/react";
 import React from "react";
 import { withRouter } from "react-router";
 
-const MainToolbar: React.FC<any> = ({ title, history }) => {
+const Toolbar2: React.FC<any> = ({ title, history }) => {
   const avatar = `https://image.flaticon.com/icons/svg/234/234694.svg`;
   return (
     <IonToolbar>
       <IonItem lines="none">
+        <IonMenuButton slot="start" />
         <IonTitle style={{ fontWeight: "bold" }}>{title}</IonTitle>
-        <IonAvatar slot="end" onClick={() => history.push("/profile")}>
+        <IonAvatar onClick={() => history.push("/profile")}>
           <img src={avatar} alt="" />
         </IonAvatar>
       </IonItem>
@@ -16,4 +23,4 @@ const MainToolbar: React.FC<any> = ({ title, history }) => {
   );
 };
 
-export default withRouter(MainToolbar);
+export default withRouter(Toolbar2);

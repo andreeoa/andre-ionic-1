@@ -2,33 +2,23 @@ import {
   IonContent,
   IonHeader,
   IonPage,
-  IonTitle,
-  IonToolbar,
   IonGrid,
   IonRow,
   IonCol,
   IonItem,
   IonLabel,
   IonSelect,
-  IonSelectOption,
-  IonButtons,
-  IonMenuButton
+  IonSelectOption
 } from "@ionic/react";
 import React from "react";
 import ExpenseApprovalItem from "../../components/Apps/eApproval/ExpenseApprovalItem";
+import Toolbar2 from "../../components/Toolbars/Toolbar2";
 
-const ExpenseApproval: React.FC = () => {
+const ExpenseApproval: React.FC = ({ history }: any) => {
   return (
     <IonPage>
       <IonHeader>
-        <IonToolbar>
-          <IonItem lines="none">
-            <IonButtons slot="start">
-              <IonMenuButton />
-            </IonButtons>
-            <IonTitle style={{ fontWeight: "bold" }}>Expense Approval</IonTitle>
-          </IonItem>
-        </IonToolbar>
+        <Toolbar2 title="Expense Approval" />
       </IonHeader>
       <IonContent style={{ "--background": "#dff2f3" }}>
         <IonGrid>

@@ -13,14 +13,14 @@ import {
 } from "@ionic/react";
 import React from "react";
 import Tabs from "../components/Tabs";
-import MainToolbar from "../components/MainToolbar";
 import InboxItem from "../components/Inbox/InboxItem";
+import Toolbar1 from "../components/Toolbars/Toolbar1";
 
 const Inbox: React.FC = () => {
   return (
     <IonPage>
       <IonHeader>
-        <MainToolbar title="Inbox" />
+        <Toolbar1 title="Inbox" />
       </IonHeader>
       <IonContent style={{ "--background": "#dff2f3" }}>
         <IonGrid>

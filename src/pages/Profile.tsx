@@ -11,7 +11,8 @@ import {
   IonGrid,
   IonRow,
   IonCol,
-  IonImg
+  IonImg,
+  IonAvatar
 } from "@ionic/react";
 import React, { useState } from "react";
 import Tabs from "../components/Tabs";
@@ -19,7 +20,6 @@ import { lock, create } from "ionicons/icons";
 
 const Profile: React.FC = ({ history }: any) => {
   const [showAlert, setShowAlert] = useState(false);
-  const avatar = `https://image.flaticon.com/icons/svg/234/234694.svg`;
   const details = [
     {
       title: "User ID:",
@@ -55,8 +55,19 @@ const Profile: React.FC = ({ history }: any) => {
       <IonContent className="ion-padding">
         <IonGrid>
           <IonRow>
-            <IonCol style={{ padding: "0 70px" }}>
-              <IonImg src={avatar} onClick={() => history.push("/profile")} />
+            <IonCol>
+              <IonAvatar
+                style={{
+                  margin: "0 auto",
+                  minWidth: "10rem",
+                  minHeight: "10rem"
+                }}
+              >
+                <IonImg
+                  src={`https://image.flaticon.com/icons/svg/234/234694.svg`}
+                  alt=""
+                />
+              </IonAvatar>
             </IonCol>
           </IonRow>
           <IonRow>

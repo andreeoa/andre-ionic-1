@@ -17,9 +17,9 @@ import {
 import React from "react";
 import { beer, football, paw, snow } from "ionicons/icons";
 import Tabs from "../components/Tabs";
-import MainToolbar from "../components/MainToolbar";
 import ActivityItem from "../components/Activity/ActivityItem";
 import InboxItem from "../components/Inbox/InboxItem";
+import Toolbar1 from "../components/Toolbars/Toolbar1";
 
 const Dashboard: React.FC = ({ history }: any) => {
   const slideOpts = {
@@ -85,7 +85,7 @@ const Dashboard: React.FC = ({ history }: any) => {
   return (
     <IonPage>
       <IonHeader>
-        <MainToolbar title="Dashboard" />
+        <Toolbar1 title="Dashboard" />
       </IonHeader>
       <IonContent>
         <div>
@@ -192,7 +192,11 @@ const Dashboard: React.FC = ({ history }: any) => {
                   style={{ "--background": "none", margin: "-15px -15px" }}
                 >
                   <span>Inbox</span>
-                  <span slot="end" style={{ color: "#0000EE" }}>
+                  <span
+                    slot="end"
+                    style={{ color: "#0000EE" }}
+                    onClick={() => history.push("/inbox")}
+                  >
                     See All
                   </span>
                 </IonItem>
@@ -208,7 +212,11 @@ const Dashboard: React.FC = ({ history }: any) => {
                   style={{ "--background": "none", margin: "-15px -15px" }}
                 >
                   <span>Activity</span>
-                  <span slot="end" style={{ color: "#0000EE" }}>
+                  <span
+                    slot="end"
+                    style={{ color: "#0000EE" }}
+                    onClick={() => history.push("/activity")}
+                  >
                     See All
                   </span>
                 </IonItem>

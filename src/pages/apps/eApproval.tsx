@@ -1,16 +1,11 @@
 import React from "react";
 import {
   IonHeader,
-  IonToolbar,
-  IonTitle,
   IonContent,
   IonItem,
   IonLabel,
-  IonAvatar,
   IonGrid,
   IonRow,
-  IonButtons,
-  IonMenuButton,
   IonPage,
   IonCol,
   IonCard,
@@ -18,23 +13,13 @@ import {
   IonIcon
 } from "@ionic/react";
 import { beer } from "ionicons/icons";
+import Toolbar2 from "../../components/Toolbars/Toolbar2";
 
 const eApproval: React.FC = ({ history }: any) => {
-  const avatar = `https://image.flaticon.com/icons/svg/234/234694.svg`;
   return (
     <IonPage>
       <IonHeader>
-        <IonToolbar>
-          <IonItem lines="none">
-            <IonButtons slot="start">
-              <IonMenuButton />
-            </IonButtons>
-            <IonTitle style={{ fontWeight: "bold" }}>{`eApproval`}</IonTitle>
-            <IonAvatar slot="end" onClick={() => history.push("/profile")}>
-              <img src={avatar} alt="" />
-            </IonAvatar>
-          </IonItem>
-        </IonToolbar>
+        <Toolbar2 title="eApproval" />
       </IonHeader>
       <IonContent style={{ "--background": "#dff2f3" }}>
         <IonGrid>

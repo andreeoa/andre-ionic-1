@@ -1,6 +1,6 @@
 import React from "react";
 import { Redirect, Route } from "react-router-dom";
-import { IonApp, IonRouterOutlet } from "@ionic/react";
+import { IonApp, IonRouterOutlet, IonSplitPane } from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";
 import Home from "./pages/Home";
 
@@ -42,40 +42,42 @@ import Menu from "./components/Menu";
 const App: React.FC = () => (
   <IonApp>
     <IonReactRouter>
-      <IonRouterOutlet id="main">
-        <Route path="/home" component={Home} exact={true} />
-        <Route path="/products" component={Products} exact={true} />
-        <Route path="/users" component={Users} exact={true} />
-        <Route path="/user/:id" component={User} exact={true} />
-        <Route path="/signin" component={SignIn} exact={true} />
-        <Route path="/help" component={Help} exact={true} />
-        <Route
-          path="/forgot-password"
-          component={ForgotPassword}
-          exact={true}
-        />
-        <Route
-          path="/experience-our-solution"
-          component={ExperienceOurSolution}
-          exact={true}
-        />
-        <Route path="/dashboard" component={Dashboard} exact={true} />
-        <Route path="/activity" component={Activity} exact={true} />
-        <Route path="/inbox" component={Inbox} exact={true} />
-        <Route path="/settings" component={Settings} exact={true} />
-        <Route path="/profile" component={Profile} exact={true} />
-        <Route path="/notifications" component={Notifications} exact={true} />
+      <IonSplitPane contentId="main">
+        <Menu />
+        <IonRouterOutlet id="main">
+          <Route path="/home" component={Home} exact={true} />
+          <Route path="/products" component={Products} exact={true} />
+          <Route path="/users" component={Users} exact={true} />
+          <Route path="/user/:id" component={User} exact={true} />
+          <Route path="/signin" component={SignIn} exact={true} />
+          <Route path="/help" component={Help} exact={true} />
+          <Route
+            path="/forgot-password"
+            component={ForgotPassword}
+            exact={true}
+          />
+          <Route
+            path="/experience-our-solution"
+            component={ExperienceOurSolution}
+            exact={true}
+          />
+          <Route path="/dashboard" component={Dashboard} exact={true} />
+          <Route path="/activity" component={Activity} exact={true} />
+          <Route path="/inbox" component={Inbox} exact={true} />
+          <Route path="/settings" component={Settings} exact={true} />
+          <Route path="/profile" component={Profile} exact={true} />
+          <Route path="/notifications" component={Notifications} exact={true} />
 
-        <Route path="/e-approval" component={eApproval} exact={true} />
-        <Route
-          path="/expense-approval"
-          component={ExpenseApproval}
-          exact={true}
-        />
+          <Route path="/e-approval" component={eApproval} exact={true} />
+          <Route
+            path="/expense-approval"
+            component={ExpenseApproval}
+            exact={true}
+          />
 
-        <Route exact path="/" render={() => <Redirect to="/signin" />} />
-      </IonRouterOutlet>
-      <Menu />
+          <Route exact path="/" render={() => <Redirect to="/signin" />} />
+        </IonRouterOutlet>
+      </IonSplitPane>
     </IonReactRouter>
   </IonApp>
 );

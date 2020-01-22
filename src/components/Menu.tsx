@@ -9,43 +9,57 @@ import {
   IonLabel,
   IonList,
   IonMenuToggle,
-  IonItemDivider
+  IonItemDivider,
+  IonIcon,
+  IonImg
 } from "@ionic/react";
 import { menuController } from "@ionic/core";
 import { withRouter } from "react-router";
+import { create } from "ionicons/icons";
 
 const Menu: React.FC = ({ history }: any) => {
   return (
     <IonMenu contentId="main" type="overlay">
       <IonContent>
-        <IonRow>
+        <IonRow
+          className="ion-padding ion-margin-bottom"
+          style={{
+            background: "#f1f1f1"
+          }}
+        >
           <IonCol>
-            <IonItem
-              lines="none"
-              className="ion-margin-top"
-              routerLink="/profile"
+            <IonAvatar
+              style={{
+                minWidth: "5rem",
+                minHeight: "5rem"
+              }}
+              onClick={() => {
+                menuController.close();
+                history.push("/profile");
+              }}
             >
-              <IonAvatar
+              <IonImg
+                src={`https://image.flaticon.com/icons/svg/234/234694.svg`}
+                alt=""
+              />
+              <IonIcon
+                icon={create}
                 style={{
-                  height: "70px",
-                  width: "70px"
+                  background: "#ffffff",
+                  borderRadius: "50%",
+                  padding: "5px",
+                  fontSize: "20px",
+                  position: "absolute",
+                  bottom: "72px",
+                  left: "65px"
                 }}
-                onClick={() => {
-                  menuController.close();
-                }}
-              >
-                <img
-                  src={`https://image.flaticon.com/icons/svg/234/234694.svg`}
-                  alt=""
-                />
-              </IonAvatar>
-            </IonItem>
-            <IonItem lines="none" style={{ margin: "-5px 0px 0px 5px" }}>
-              <IonLabel>
-                <h2>Alex_Yong</h2>
-                <p>alexyong01@gmail.com</p>
-              </IonLabel>
-            </IonItem>
+              />
+            </IonAvatar>
+
+            <div className="ion-margin-top">
+              <h5 style={{ marginTop: "unset" }}>Alex_Yong</h5>
+              <span>alexyong01@gmail.com</span>
+            </div>
           </IonCol>
         </IonRow>
         <IonList>

@@ -6,11 +6,12 @@ import {
   IonGrid,
   IonRow,
   IonCol,
-  IonItem
+  IonItem,
+  IonToolbar,
+  IonTitle
 } from "@ionic/react";
 import React from "react";
 import Tabs from "../components/Tabs";
-import MainToolbar from "../components/MainToolbar";
 import {
   person,
   notifications,
@@ -76,7 +77,11 @@ const Settings: React.FC = ({ history }: any) => {
   return (
     <IonPage>
       <IonHeader>
-        <MainToolbar title="Settings" />
+        <IonToolbar>
+          <IonItem lines="none">
+            <IonTitle style={{ fontWeight: "bold" }}>Settings</IonTitle>
+          </IonItem>
+        </IonToolbar>
       </IonHeader>
       <IonContent>
         <IonGrid>
