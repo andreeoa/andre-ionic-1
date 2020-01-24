@@ -10,13 +10,13 @@ import {
   IonButtons,
   IonText,
   IonItem,
-  IonIcon
+  IonHeader,
+  IonBackButton
 } from "@ionic/react";
 import React, { useState } from "react";
 import ExpenseApprovalItem from "../../components/Apps/eApproval/ExpenseApprovalItem";
-import { arrowBack } from "ionicons/icons";
 
-const ExpenseApprovalDetail: React.FC<any> = ({ history, match }) => {
+const ExpenseApprovalDetail: React.FC<any> = ({ match }) => {
   const { id } = match.params;
   const [tab, setTab] = useState(0);
   const tabItems = [
@@ -32,7 +32,7 @@ const ExpenseApprovalDetail: React.FC<any> = ({ history, match }) => {
 
   return (
     <IonPage>
-      <header>
+      <IonHeader>
         <IonToolbar style={{ "--background": "#dff2f3" }}>
           <IonItem
             lines="none"
@@ -45,9 +45,7 @@ const ExpenseApprovalDetail: React.FC<any> = ({ history, match }) => {
               slot="start"
               style={{ position: "absolute", left: "0" }}
             >
-              <IonButton onClick={() => history.goBack()}>
-                <IonIcon slot="icon-only" icon={arrowBack} />
-              </IonButton>
+              <IonBackButton />
             </IonButtons>
             <IonTitle>Expense ID: {id}</IonTitle>
           </IonItem>
@@ -95,44 +93,40 @@ const ExpenseApprovalDetail: React.FC<any> = ({ history, match }) => {
                 onClick={() => setTab(item.key)}
               >
                 {item.title}
-                <div></div>
               </IonCol>
             ))}
           </IonItem>
         </IonToolbar>
-        <IonRow>
-          <IonCol>
-            {tab === 0 ? (
-              <div
-                style={{
-                  borderBottom: "3px solid #3880ff",
-                  position: "relative",
-                  bottom: "5px"
-                }}
-              ></div>
-            ) : (
-              ""
-            )}
-          </IonCol>
-          <IonCol>
-            {tab === 1 ? (
-              <div
-                style={{
-                  borderBottom: "3px solid #3880ff",
-                  position: "relative",
-                  bottom: "5px"
-                }}
-              ></div>
-            ) : (
-              ""
-            )}
-          </IonCol>
-        </IonRow>
-      </header>
+      </IonHeader>
       <IonContent>
+        <IonRow slot="fixed">
+          {tabItems.map(item => (
+            <IonCol key={item.title}>
+              <div
+                style={{
+                  borderBottom: "3px solid #3880ff",
+                  position: "relative",
+                  bottom: "5px",
+                  display: item.key === tab ? "block" : "none"
+                }}
+              ></div>
+            </IonCol>
+          ))}
+        </IonRow>
         <IonRow className="ion-padding">
           {tab === 0 ? (
             <>
+              <ExpenseApprovalItem />
+              <ExpenseApprovalItem />
+              <ExpenseApprovalItem />
+              <ExpenseApprovalItem />
+              <ExpenseApprovalItem />
+              <ExpenseApprovalItem />
+              <ExpenseApprovalItem />
+              <ExpenseApprovalItem />
+              <ExpenseApprovalItem />
+              <ExpenseApprovalItem />
+              <ExpenseApprovalItem />
               <ExpenseApprovalItem />
               <ExpenseApprovalItem />
               <ExpenseApprovalItem />
