@@ -38,6 +38,7 @@ import Notifications from "./pages/Notifications";
 import eApproval from "./pages/apps/eApproval";
 import ExpenseApproval from "./pages/apps/ExpenseApproval";
 import Menu from "./components/Menu";
+import ExpenseApprovalDetail from "./pages/apps/ExpenseApprovalDetail";
 
 const App: React.FC = () => (
   <IonApp>
@@ -72,6 +73,11 @@ const App: React.FC = () => (
           <Route
             path="/expense-approval"
             component={ExpenseApproval}
+            exact={true}
+          />
+          <Route
+            path="/expense-approval-detail/:id"
+            component={ExpenseApprovalDetail}
             exact={true}
           />
 

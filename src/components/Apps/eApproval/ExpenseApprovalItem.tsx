@@ -9,7 +9,7 @@ const ExpenseApprovalItem: React.FC = () => {
           margin: "unset"
         }}
       >
-        <IonItem lines="none">
+        <IonItem lines="none" routerLink="/expense-approval-detail/1">
           <IonLabel>
             <small className="ion-margin-bottom">Expense ID: 5000212</small>
             <h2 style={{ marginTop: "10px", fontWeight: "bold" }}>
