@@ -1,31 +1,24 @@
 import {
   IonContent,
   IonPage,
-  IonGrid,
   IonRow,
   IonCol,
   IonLabel,
   IonButton,
-  IonHeader,
   IonToolbar,
   IonTitle,
   IonButtons,
-  IonBackButton,
   IonText,
-  IonItem
+  IonItem,
+  IonIcon
 } from "@ionic/react";
 import React, { useState } from "react";
 import ExpenseApprovalItem from "../../components/Apps/eApproval/ExpenseApprovalItem";
+import { arrowBack } from "ionicons/icons";
 
-const ExpenseApprovalDetail: React.FC<any> = ({ match }) => {
+const ExpenseApprovalDetail: React.FC<any> = ({ history, match }) => {
   const { id } = match.params;
   const [tab, setTab] = useState(0);
-  const selectedStyle = {
-    borderBottom: "3px solid #3880ff",
-    position: "relative",
-    bottom: "5px"
-  };
-
   const tabItems = [
     {
       title: "Expense Detail",
@@ -52,7 +45,9 @@ const ExpenseApprovalDetail: React.FC<any> = ({ match }) => {
               slot="start"
               style={{ position: "absolute", left: "0" }}
             >
-              <IonBackButton />
+              <IonButton onClick={() => history.goBack()}>
+                <IonIcon slot="icon-only" icon={arrowBack} />
+              </IonButton>
             </IonButtons>
             <IonTitle>Expense ID: {id}</IonTitle>
           </IonItem>
