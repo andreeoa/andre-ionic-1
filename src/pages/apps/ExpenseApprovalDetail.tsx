@@ -99,7 +99,7 @@ const ExpenseApprovalDetail: React.FC<any> = ({ match }) => {
         </IonToolbar>
       </IonHeader>
       <IonContent>
-        <IonRow slot="fixed">
+        <IonRow slot="fixed" className="ion-padding-horizontal">
           {tabItems.map(item => (
             <IonCol key={item.title}>
               <div
