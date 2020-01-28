@@ -11,10 +11,15 @@ import {
   IonText,
   IonItem,
   IonHeader,
-  IonBackButton
+  IonBackButton,
+  IonCard,
+  IonFooter,
+  IonIcon
 } from "@ionic/react";
 import React, { useState } from "react";
-import ExpenseApprovalItem from "../../components/Apps/eApproval/ExpenseApprovalItem";
+import ExpenseDetailItem from "../../components/Apps/eApproval/ExpenseDetailItem";
+import WorkFlowInfoItem from "../../components/Apps/eApproval/WorkFlowInfoItem";
+import { close, checkmark } from "ionicons/icons";
 
 const ExpenseApprovalDetail: React.FC<any> = ({ match }) => {
   const { id } = match.params;
@@ -116,26 +121,43 @@ const ExpenseApprovalDetail: React.FC<any> = ({ match }) => {
         <IonRow className="ion-padding">
           {tab === 0 ? (
             <>
-              <ExpenseApprovalItem />
-              <ExpenseApprovalItem />
-              <ExpenseApprovalItem />
-              <ExpenseApprovalItem />
-              <ExpenseApprovalItem />
-              <ExpenseApprovalItem />
-              <ExpenseApprovalItem />
-              <ExpenseApprovalItem />
-              <ExpenseApprovalItem />
-              <ExpenseApprovalItem />
-              <ExpenseApprovalItem />
-              <ExpenseApprovalItem />
-              <ExpenseApprovalItem />
-              <ExpenseApprovalItem />
+              <ExpenseDetailItem />
+              <ExpenseDetailItem />
+              <ExpenseDetailItem />
+              <ExpenseDetailItem />
+              <ExpenseDetailItem />
             </>
           ) : (
-            <p>Workflow Info</p>
+            <WorkFlowInfoItem />
           )}
         </IonRow>
       </IonContent>
+      <IonFooter className="ion-padding-horizontal">
+        <IonToolbar>
+          <IonCard
+            style={{
+              background: "#dff2f3",
+              borderRadius: "30px"
+            }}
+            className="ion-text-center"
+          >
+            <IonRow>
+              <IonCol size="6">
+                <IonButton fill="clear" color="danger">
+                  Reject
+                  <IonIcon slot="start" icon={close} />
+                </IonButton>
+              </IonCol>
+              <IonCol size="6">
+                <IonButton fill="clear" color="success">
+                  Approve
+                  <IonIcon slot="start" icon={checkmark} />
+                </IonButton>
+              </IonCol>
+            </IonRow>
+          </IonCard>
+        </IonToolbar>
+      </IonFooter>
     </IonPage>
   );
 };
