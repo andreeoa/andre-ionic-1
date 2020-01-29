@@ -12,10 +12,10 @@ const Toolbar2: React.FC<any> = ({ title, history }) => {
   const avatar = `https://image.flaticon.com/icons/svg/234/234694.svg`;
   return (
     <IonToolbar>
-      <IonItem lines="none">
-        <IonMenuButton slot="start" />
-        <IonTitle style={{ fontWeight: "bold" }}>{title}</IonTitle>
-        <IonAvatar onClick={() => history.push("/profile")}>
+      <IonItem lines="none" className="ion-text-center">
+        <IonMenuButton />
+        <IonTitle>{title}</IonTitle>
+        <IonAvatar slot="end" onClick={() => history.push("/profile")}>
           <img src={avatar} alt="" />
         </IonAvatar>
       </IonItem>

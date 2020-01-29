@@ -45,9 +45,9 @@ const Profile: React.FC = ({ history }: any) => {
     <IonPage>
       <header>
         <IonToolbar>
-          <IonItem lines="none">
+          <IonItem lines="none" className="ion-text-center">
             <IonIcon icon={lock} />
-            <IonTitle style={{ fontWeight: "bold" }}>Profile</IonTitle>
+            <IonTitle>Profile</IonTitle>
             <IonIcon icon={create} />
           </IonItem>
         </IonToolbar>

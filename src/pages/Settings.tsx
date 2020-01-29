@@ -78,8 +78,8 @@ const Settings: React.FC = ({ history }: any) => {
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonItem lines="none">
-            <IonTitle style={{ fontWeight: "bold" }}>Settings</IonTitle>
+          <IonItem lines="none" className="ion-text-center">
+            <IonTitle>Settings</IonTitle>
           </IonItem>
         </IonToolbar>
       </IonHeader>

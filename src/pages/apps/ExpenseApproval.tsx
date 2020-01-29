@@ -14,7 +14,7 @@ import React from "react";
 import ExpenseApprovalItem from "../../components/Apps/eApproval/ExpenseApprovalItem";
 import Toolbar2 from "../../components/Toolbars/Toolbar2";
 
-const ExpenseApproval: React.FC = ({ history }: any) => {
+const ExpenseApproval: React.FC = () => {
   return (
     <IonPage>
       <IonHeader>
