@@ -9,16 +9,24 @@ import {
   IonImg,
   IonGrid,
   IonRow,
-  IonCol
+  IonCol,
+  IonLoading,
+  IonText
 } from "@ionic/react";
-import React from "react";
+import React, { useState } from "react";
 import { person, unlock, helpCircleOutline } from "ionicons/icons";
 import Logo from "../img/eoa-logo.png";
 import styles from "../css/signin.module.css";
+import { connect } from "react-redux";
+import { authenticate } from "../redux/auth/actions";
 
-const SignIn: React.FC = ({ history }: any) => {
+const SignIn: React.FC = ({ history, authenticate, authUser }: any) => {
+  const [username, setUsername] = useState<string>("boonhao");
+  const [password, setPassword] = useState<string>("12345678");
+
   const gotoHelp = (e: any) => {
     e.preventDefault();
+    
     history.push("/help");
   };
   const gotoForgotPassword = (e: any) => {
@@ -31,7 +39,11 @@ const SignIn: React.FC = ({ history }: any) => {
   };
   const onLogin = (e: any) => {
     e.preventDefault();
-    history.push("/dashboard");
+    const user = {
+      USERID: username,
+      USERPASS: password
+    };
+    authenticate(user);
   };
   return (
     <IonPage>
@@ -46,6 +58,7 @@ const SignIn: React.FC = ({ history }: any) => {
         </IonItem>
       </header>
       <IonContent className="ion-padding">
+        <IonLoading isOpen={authUser.loading} message={"Loading..."} />
         <form onSubmit={onLogin}>
           <IonGrid>
             <IonRow style={{ marginTop: "70px" }}>
@@ -66,7 +79,11 @@ const SignIn: React.FC = ({ history }: any) => {
               <IonCol>
                 <IonItem lines="none" className={styles.input}>
                   <IonIcon icon={person} slot="start" />
-                  <IonInput placeholder="User ID"></IonInput>
+                  <IonInput
+                    placeholder="User ID"
+                    value={username}
+                    onIonChange={(e: any) => setUsername(e.target.value)}
+                  ></IonInput>
                 </IonItem>
               </IonCol>
             </IonRow>
@@ -74,7 +91,12 @@ const SignIn: React.FC = ({ history }: any) => {
               <IonCol>
                 <IonItem lines="none" className={styles.input}>
                   <IonIcon icon={unlock} slot="start" />
-                  <IonInput type="password" placeholder="Password"></IonInput>
+                  <IonInput
+                    type="password"
+                    placeholder="Password"
+                    value={password}
+                    onIonChange={(e: any) => setPassword(e.target.value)}
+                  ></IonInput>
                 </IonItem>
               </IonCol>
             </IonRow>
@@ -107,6 +129,15 @@ const SignIn: React.FC = ({ history }: any) => {
                 </IonButton>
               </IonCol>
             </IonRow>
+            <IonRow>
+              {authUser.error ? (
+                <IonCol className="ion-text-center">
+                  <IonText color="danger">{authUser.error}</IonText>
+                </IonCol>
+              ) : (
+                ""
+              )}
+            </IonRow>
           </IonGrid>
         </form>
       </IonContent>
@@ -125,4 +156,16 @@ const SignIn: React.FC = ({ history }: any) => {
   );
 };
 
-export default SignIn;
+const mapStateToProps = (state: any) => {
+  return {
+    authUser: state.auth
+  };
+};
+
+const mapDispatchToProps = (dispatch: any, ownProps: any) => {
+  return {
+    authenticate: (user: object) => dispatch(authenticate(user, ownProps))
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignIn);
