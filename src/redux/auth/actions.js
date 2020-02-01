@@ -7,6 +7,8 @@ import {
   USER_AUTH_FAILURE
 } from "./types";
 
+const { Storage } = Plugins;
+
 export const userAuthRequest = () => {
   return {
     type: USER_AUTH_REQUEST
@@ -28,7 +30,6 @@ export const userAuthFailure = error => {
 };
 
 const setAuthKeys = async user => {
-  const { Storage } = Plugins;
   const { apiKey, EUUID } = user;
   await Storage.set({
     key: "auth-keys",
@@ -49,8 +50,10 @@ export const authenticate = (_user, ownProps) => {
       setAuthKeys(user);
       ownProps.history.push("/dashboard");
     } catch (error) {
-      const { message } = error.response.data;
-      dispatch(userAuthFailure(message));
+      if (error.response) {
+        const { message } = error.response.data;
+        dispatch(userAuthFailure(message));
+      }
     }
   };
 };
