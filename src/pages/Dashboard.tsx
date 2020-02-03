@@ -224,6 +224,7 @@ const Dashboard: React.FC = ({ history }: any) => {
             </IonRow>
             <IonRow>
               <ActivityItem />
+              <p>{process.env.REACT_APP_BASE_URL}</p>
             </IonRow>
           </IonGrid>
         </div>

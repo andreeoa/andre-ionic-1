@@ -12,13 +12,16 @@ import {
   IonRow,
   IonCol,
   IonImg,
-  IonAvatar
+  IonAvatar,
+  IonLoading
 } from "@ionic/react";
 import React, { useState } from "react";
 import Tabs from "../components/Tabs";
 import { lock, create } from "ionicons/icons";
+import { connect } from "react-redux";
+import { logout } from "../redux/auth/logout/actions";
 
-const Profile: React.FC = ({ history }: any) => {
+const Profile: React.FC = ({ logoutData, logout }: any) => {
   const [showAlert, setShowAlert] = useState(false);
   const details = [
     {
@@ -53,6 +56,7 @@ const Profile: React.FC = ({ history }: any) => {
         </IonToolbar>
       </header>
       <IonContent className="ion-padding">
+        <IonLoading isOpen={logoutData.loading} message={"Logging out..."} />
         <IonGrid>
           <IonRow>
             <IonCol>
@@ -126,7 +130,7 @@ const Profile: React.FC = ({ history }: any) => {
             {
               text: "OK",
               handler: () => {
-                history.push("/signin");
+                logout();
               }
             }
           ]}
@@ -139,4 +143,16 @@ const Profile: React.FC = ({ history }: any) => {
   );
 };
 
-export default Profile;
+const mapStateToProps = (state: any) => {
+  return {
+    logoutData: state.logout
+  };
+};
+
+const mapDispatchToProps = (dispatch: any, ownProps: any) => {
+  return {
+    logout: () => dispatch(logout(ownProps))
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Profile);
