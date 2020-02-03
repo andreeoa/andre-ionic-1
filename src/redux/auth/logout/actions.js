@@ -27,11 +27,16 @@ const unsetAuthKeys = async () => {
   await Storage.remove({ key: "auth-keys" });
 };
 
+const getObject = async () => {
+  const ret = await Storage.get({ key: "auth-keys" });
+  return JSON.parse(ret.value);
+};
+
 export const logout = ownProps => {
   return async dispatch => {
     try {
       dispatch(logoutRequest());
-      const authObj = JSON.parse(localStorage.getItem("_cap_auth-keys"));
+      const authObj = await getObject();
       const data = {
         EUUID: authObj.EUUID,
         APPID: "com.eoa.emobility"

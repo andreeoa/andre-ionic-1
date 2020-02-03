@@ -1,8 +1,16 @@
 import axios from "axios";
 import { unAuthDialog } from "./global";
+import { Plugins } from "@capacitor/core";
 
-const requestConfig = config => {
-  const authObj = JSON.parse(localStorage.getItem("_cap_auth-keys"));
+const { Storage } = Plugins;
+
+const getObject = async () => {
+  const ret = await Storage.get({ key: "auth-keys" });
+  return JSON.parse(ret.value);
+};
+
+const requestConfig = async config => {
+  const authObj = await getObject();
   config.headers.common["Authorization"] = authObj ? authObj.apiKey : null;
   config.headers.common["X-EUUID"] = authObj ? authObj.EUUID : null;
   config.headers.common["X-APPID"] = "com.eoa.emobility";
