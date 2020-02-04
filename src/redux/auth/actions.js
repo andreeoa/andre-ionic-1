@@ -29,6 +29,11 @@ export const userAuthFailure = error => {
   };
 };
 
+const getObject = async () => {
+  const ret = await Storage.get({ key: "auth-keys" });
+  return JSON.parse(ret.value);
+};
+
 const setAuthKeys = async user => {
   const { apiKey, EUUID } = user;
   await Storage.set({
@@ -40,23 +45,17 @@ const setAuthKeys = async user => {
   });
 };
 
-const getUserInfo = async ownProps => {
+export const getUserInfo = async () => {
   return async dispatch => {
     try {
-      const user = await axios.get("/app/get-user-info");
-      dispatch(userAuthSuccess(user.data[0]));
-      ownProps.history.push("/dashboard");
-    } catch (error) {}
-  };
-};
-
-export const authenticate = (_user, ownProps) => {
-  return async dispatch => {
-    try {
-      dispatch(userAuthRequest());
-      const response = await axios.post("/login", JSON.stringify(_user));
-      await setAuthKeys(response.data);
-      dispatch(await getUserInfo(ownProps));
+      const obj = await getObject();
+      const response = await axios.get("/app/get-user-info", {
+        params: {
+          APIKEY: obj.apiKey,
+          UUID: obj.EUUID
+        }
+      });
+      dispatch(userAuthSuccess(response.data.data));
     } catch (error) {
       if (error.response) {
         const { message } = error.response.data;
@@ -66,20 +65,20 @@ export const authenticate = (_user, ownProps) => {
   };
 };
 
-export const auth = ownProps => {
-  return async () => {
-    const ret = await Storage.get({ key: "auth-keys" });
-    if (!JSON.parse(ret.value)) {
-      ownProps.history.push("/signin");
-    }
-  };
-};
-
-export const nonAuth = ownProps => {
-  return async () => {
-    const ret = await Storage.get({ key: "auth-keys" });
-    if (JSON.parse(ret.value)) {
+export const authenticate = (_user, ownProps) => {
+  return async dispatch => {
+    try {
+      dispatch(userAuthRequest());
+      const response = await axios.post("/login", JSON.stringify(_user));
+      await setAuthKeys(response.data);
+      dispatch(await getUserInfo(response.data));
+      dispatch(userAuthSuccess({}));
       ownProps.history.push("/dashboard");
+    } catch (error) {
+      if (error.response) {
+        const { message } = error.response.data;
+        dispatch(userAuthFailure(message));
+      }
     }
   };
 };

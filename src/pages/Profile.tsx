@@ -13,25 +13,22 @@ import {
   IonCol,
   IonImg,
   IonAvatar,
-  IonLoading,
-  useIonViewWillEnter
+  IonLoading
 } from "@ionic/react";
 import React, { useState } from "react";
 import Tabs from "../components/Tabs";
 import { lock, create } from "ionicons/icons";
 import { connect } from "react-redux";
 import { logout } from "../redux/auth/logout/actions";
-import { auth } from "../redux/auth/actions";
 
-const Profile: React.FC = ({ authData, logoutData, logout, auth }: any) => {
-  useIonViewWillEnter(auth);
+const Profile: React.FC = ({ authData, logoutData, logout }: any) => {
   const {
-    name,
     username,
     firstname,
     lastname,
     email,
-    mobile_no
+    mobile_no,
+    last_login
   } = authData.user;
   const [showAlert, setShowAlert] = useState(false);
   const details = [
@@ -88,7 +85,7 @@ const Profile: React.FC = ({ authData, logoutData, logout, auth }: any) => {
           <IonRow>
             <IonCol>
               <div className="ion-text-center">
-                <h1>{name}</h1>
+                <h1>{firstname + " " + lastname}</h1>
                 <h5>{email}</h5>
               </div>
             </IonCol>
@@ -118,9 +115,7 @@ const Profile: React.FC = ({ authData, logoutData, logout, auth }: any) => {
           </IonRow>
           <IonRow>
             <IonCol>
-              <p className="ion-text-center">
-                Last login: 26 Dec 2019 11:22:14 AM
-              </p>
+              <p className="ion-text-center">Last login: {last_login}</p>
             </IonCol>
           </IonRow>
         </IonGrid>
@@ -163,8 +158,7 @@ const mapStateToProps = (state: any) => {
 
 const mapDispatchToProps = (dispatch: any, ownProps: any) => {
   return {
-    logout: () => dispatch(logout(ownProps)),
-    auth: () => dispatch(auth(ownProps))
+    logout: () => dispatch(logout(ownProps))
   };
 };
 
