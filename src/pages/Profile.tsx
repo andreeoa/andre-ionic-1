@@ -13,32 +13,43 @@ import {
   IonCol,
   IonImg,
   IonAvatar,
-  IonLoading
+  IonLoading,
+  useIonViewWillEnter
 } from "@ionic/react";
 import React, { useState } from "react";
 import Tabs from "../components/Tabs";
 import { lock, create } from "ionicons/icons";
 import { connect } from "react-redux";
 import { logout } from "../redux/auth/logout/actions";
+import { auth } from "../redux/auth/actions";
 
-const Profile: React.FC = ({ logoutData, logout }: any) => {
+const Profile: React.FC = ({ authData, logoutData, logout, auth }: any) => {
+  useIonViewWillEnter(auth);
+  const {
+    name,
+    username,
+    firstname,
+    lastname,
+    email,
+    mobile_no
+  } = authData.user;
   const [showAlert, setShowAlert] = useState(false);
   const details = [
     {
       title: "User ID:",
-      body: "alexyong01"
+      body: username
     },
     {
       title: "First Name:",
-      body: "Alex"
+      body: firstname
     },
     {
       title: "Last Name:",
-      body: "yong"
+      body: lastname
     },
     {
       title: "Mobile No.:",
-      body: "+06123456789"
+      body: mobile_no
     }
   ];
   const onLogOut = (e: any) => {
@@ -77,8 +88,8 @@ const Profile: React.FC = ({ logoutData, logout }: any) => {
           <IonRow>
             <IonCol>
               <div className="ion-text-center">
-                <h1>Alex_Yong</h1>
-                <h5>alexyong01@gmail.com</h5>
+                <h1>{name}</h1>
+                <h5>{email}</h5>
               </div>
             </IonCol>
           </IonRow>
@@ -145,13 +156,15 @@ const Profile: React.FC = ({ logoutData, logout }: any) => {
 
 const mapStateToProps = (state: any) => {
   return {
+    authData: state.auth,
     logoutData: state.logout
   };
 };
 
 const mapDispatchToProps = (dispatch: any, ownProps: any) => {
   return {
-    logout: () => dispatch(logout(ownProps))
+    logout: () => dispatch(logout(ownProps)),
+    auth: () => dispatch(auth(ownProps))
   };
 };
 

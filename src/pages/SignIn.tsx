@@ -11,22 +11,30 @@ import {
   IonRow,
   IonCol,
   IonLoading,
-  IonText
+  IonText,
+  useIonViewWillEnter
 } from "@ionic/react";
 import React, { useState } from "react";
 import { person, unlock, helpCircleOutline } from "ionicons/icons";
 import Logo from "../img/eoa-logo.png";
 import styles from "../css/signin.module.css";
 import { connect } from "react-redux";
-import { authenticate } from "../redux/auth/actions";
+import { authenticate, nonAuth } from "../redux/auth/actions";
 
-const SignIn: React.FC = ({ history, authenticate, authUser }: any) => {
+const SignIn: React.FC = ({
+  history,
+  authUser,
+  authenticate,
+  nonAuth
+}: any) => {
+  useIonViewWillEnter(nonAuth);
+
   const [username, setUsername] = useState<string>("boonhao");
   const [password, setPassword] = useState<string>("12345678");
 
   const gotoHelp = (e: any) => {
     e.preventDefault();
-    
+
     history.push("/help");
   };
   const gotoForgotPassword = (e: any) => {
@@ -164,7 +172,8 @@ const mapStateToProps = (state: any) => {
 
 const mapDispatchToProps = (dispatch: any, ownProps: any) => {
   return {
-    authenticate: (user: object) => dispatch(authenticate(user, ownProps))
+    authenticate: (user: object) => dispatch(authenticate(user, ownProps)),
+    nonAuth: (user: object) => dispatch(nonAuth(ownProps))
   };
 };
 

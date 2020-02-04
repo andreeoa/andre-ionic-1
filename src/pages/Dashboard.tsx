@@ -12,7 +12,8 @@ import {
   IonSlide,
   IonLabel,
   IonIcon,
-  IonFooter
+  IonFooter,
+  useIonViewWillEnter
 } from "@ionic/react";
 import React from "react";
 import { beer, football, paw, snow } from "ionicons/icons";
@@ -20,8 +21,11 @@ import Tabs from "../components/Tabs";
 import ActivityItem from "../components/Activity/ActivityItem";
 import InboxItem from "../components/Inbox/InboxItem";
 import Toolbar1 from "../components/Toolbars/Toolbar1";
+import { auth } from "../redux/auth/actions";
+import { connect } from "react-redux";
 
-const Dashboard: React.FC = ({ history }: any) => {
+const Dashboard: React.FC = ({ auth, history }: any) => {
+  useIonViewWillEnter(auth);
   const slideOpts = {
     initialSlide: 0,
     speed: 400
@@ -236,4 +240,10 @@ const Dashboard: React.FC = ({ history }: any) => {
   );
 };
 
-export default Dashboard;
+const mapDispatchToProps = (disptach: any, ownProps: any) => {
+  return {
+    auth: () => disptach(auth(ownProps))
+  };
+};
+
+export default connect(null, mapDispatchToProps)(Dashboard);
