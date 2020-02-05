@@ -1,23 +1,26 @@
 import { IonTitle, IonToolbar, IonItem, IonAvatar } from "@ionic/react";
 import React from "react";
 import { withRouter } from "react-router";
-import axios from "../../plugins/axios";
+import { connect } from "react-redux";
 
-const Toolbar1: React.FC<any> = ({ title, history }) => {
-  const avatar = `https://image.flaticon.com/icons/svg/234/234694.svg`;
-  const testReq = async () => {
-    await axios.post("/app/t");
-  };
+const Toolbar1: React.FC<any> = ({ title, history, authData }) => {
+  const { user_photo } = authData.user;
   return (
     <IonToolbar>
       <IonItem lines="none" className="ion-text-center">
-        <IonTitle onClick={testReq}>{title}</IonTitle>
+        <IonTitle>{title}</IonTitle>
         <IonAvatar slot="end" onClick={() => history.push("/profile")}>
-          <img src={avatar} alt="" />
+          <img src={user_photo} alt="" />
         </IonAvatar>
       </IonItem>
     </IonToolbar>
   );
 };
 
-export default withRouter(Toolbar1);
+const mapStateToProps = (state: any) => {
+  return {
+    authData: state.auth
+  };
+};
+
+export default connect(mapStateToProps)(withRouter(Toolbar1));

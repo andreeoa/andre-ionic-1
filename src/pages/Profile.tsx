@@ -28,6 +28,7 @@ const Profile: React.FC = ({ authData, logoutData, logout }: any) => {
     lastname,
     email,
     mobile_no,
+    user_photo,
     last_login
   } = authData.user;
   const [showAlert, setShowAlert] = useState(false);
@@ -75,10 +76,7 @@ const Profile: React.FC = ({ authData, logoutData, logout }: any) => {
                   minHeight: "10rem"
                 }}
               >
-                <IonImg
-                  src={`https://image.flaticon.com/icons/svg/234/234694.svg`}
-                  alt=""
-                />
+                <IonImg src={user_photo} alt="" />
               </IonAvatar>
             </IonCol>
           </IonRow>

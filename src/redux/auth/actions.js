@@ -71,8 +71,7 @@ export const authenticate = (_user, ownProps) => {
       dispatch(userAuthRequest());
       const response = await axios.post("/login", JSON.stringify(_user));
       await setAuthKeys(response.data);
-      dispatch(await getUserInfo(response.data));
-      dispatch(userAuthSuccess({}));
+      await dispatch(await getUserInfo(response.data));
       ownProps.history.push("/dashboard");
     } catch (error) {
       if (error.response) {

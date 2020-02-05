@@ -7,20 +7,27 @@ import {
 } from "@ionic/react";
 import React from "react";
 import { withRouter } from "react-router";
+import { connect } from "react-redux";
 
-const Toolbar2: React.FC<any> = ({ title, history }) => {
-  const avatar = `https://image.flaticon.com/icons/svg/234/234694.svg`;
+const Toolbar2: React.FC<any> = ({ title, history, authData }) => {
+  const { user_photo } = authData.user;
   return (
     <IonToolbar>
       <IonItem lines="none" className="ion-text-center">
         <IonMenuButton />
         <IonTitle>{title}</IonTitle>
         <IonAvatar slot="end" onClick={() => history.push("/profile")}>
-          <img src={avatar} alt="" />
+          <img src={user_photo} alt="" />
         </IonAvatar>
       </IonItem>
     </IonToolbar>
   );
 };
 
-export default withRouter(Toolbar2);
+const mapStateToProps = (state: any) => {
+  return {
+    authData: state.auth
+  };
+};
+
+export default connect(mapStateToProps)(withRouter(Toolbar2));

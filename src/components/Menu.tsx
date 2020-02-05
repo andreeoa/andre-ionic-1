@@ -16,8 +16,10 @@ import {
 import { menuController } from "@ionic/core";
 import { withRouter } from "react-router";
 import { create } from "ionicons/icons";
+import { connect } from "react-redux";
 
-const Menu: React.FC = ({ history }: any) => {
+const Menu: React.FC = ({ history, authData }: any) => {
+  const { firstname, lastname, email, user_photo, last_login } = authData.user;
   return (
     <IonMenu contentId="main" type="overlay">
       <IonContent>
@@ -38,10 +40,7 @@ const Menu: React.FC = ({ history }: any) => {
                 history.push("/profile");
               }}
             >
-              <IonImg
-                src={`https://image.flaticon.com/icons/svg/234/234694.svg`}
-                alt=""
-              />
+              <IonImg src={user_photo} alt="" />
               <IonIcon
                 icon={create}
                 style={{
@@ -57,8 +56,10 @@ const Menu: React.FC = ({ history }: any) => {
             </IonAvatar>
 
             <div className="ion-margin-top">
-              <h5 style={{ marginTop: "unset" }}>Alex_Yong</h5>
-              <span>alexyong01@gmail.com</span>
+              <h5 style={{ marginTop: "unset" }}>
+                {firstname + " " + lastname}
+              </h5>
+              <span>{email}</span>
             </div>
           </IonCol>
         </IonRow>
@@ -98,10 +99,16 @@ const Menu: React.FC = ({ history }: any) => {
         </IonList>
       </IonContent>
       <footer className="ion-margin-vertical">
-        <p className="ion-text-center">Last login 26 Dec 2019 11:22:14 AM</p>
+        <p className="ion-text-center">Last login: {last_login}</p>
       </footer>
     </IonMenu>
   );
 };
 
-export default withRouter(Menu);
+const mapStateToProps = (state: any) => {
+  return {
+    authData: state.auth
+  };
+};
+
+export default connect(mapStateToProps)(withRouter(Menu));
